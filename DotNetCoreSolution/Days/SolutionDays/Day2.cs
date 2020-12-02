@@ -25,30 +25,47 @@ namespace Advent2020.DotNetCoreSolution.Days.SolutionDays
             }
 
             var validPWCount = 0;
+            var part2Count = 0;
             foreach(string inputRow in dayInput)
             {
                 var policyAndPW = inputRow.Split(':');
                 var potentialPW = policyAndPW.Last();
                 var countAndLetter = policyAndPW.First().Split(' ');
                 var letterCheck = countAndLetter.Last();
-                var letterCount = potentialPW.Count(x => x == letterCheck.FirstOrDefault());
+                var letterChar = letterCheck.FirstOrDefault();
+                var letterCount = potentialPW.Count(x => x == letterChar);
                 var minAndMax = countAndLetter.First().Split('-');
+                var min = int.Parse(minAndMax.First());
+                var max = int.Parse(minAndMax.Last());
 
-                if (letterCount >= int.Parse(minAndMax.First()))
+                if (letterCount >= min)
                 {
-                    if (letterCount <= int.Parse(minAndMax.Last()))
+                    if (letterCount <= max)
                     {
                         validPWCount++;
                     }
                 }
+
+
+                if (potentialPW[min] == letterChar)
+                {
+                    if (potentialPW[max] == letterChar)
+                    {
+                        continue;
+                    } else
+                    {
+                        part2Count++;
+                    }
+                } else
+                {
+                    if (potentialPW[max] == letterChar)
+                    {
+                        part2Count++;
+                    }
+                }
             }
 
-            return validPWCount.ToString();
-        }
-
-        private async Task Part2()
-        {
-
+            return string.Format("Part1: {0}, Part2: {1}", validPWCount.ToString(), part2Count.ToString());
         }
     }
 }
