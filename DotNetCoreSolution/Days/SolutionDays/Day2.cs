@@ -1,5 +1,4 @@
 ﻿using Amazon.S3;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -12,8 +11,7 @@ namespace Advent2020.DotNetCoreSolution.Days.SolutionDays
 
         public override string Run()
         {
-            var p1Result = Part1().Result;
-            return string.Format("Part1: {0}", p1Result);
+            return Part1().Result;
         }
 
         private async Task<string> Part1 ()
@@ -65,7 +63,7 @@ namespace Advent2020.DotNetCoreSolution.Days.SolutionDays
                 }
             }
 
-            return string.Format("Part1: {0}, Part2: {1}", validPWCount.ToString(), part2Count.ToString());
+            return string.Format("Part1: {0}, Part2: {1}", validPWCount, part2Count);
         }
     }
 }

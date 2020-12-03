@@ -1,7 +1,5 @@
 ﻿using Amazon.S3;
-using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace Advent2020.DotNetCoreSolution.Days.SolutionDays
@@ -17,7 +15,7 @@ namespace Advent2020.DotNetCoreSolution.Days.SolutionDays
             return string.Format("Part 1: {0}, Part 2: {1}", p1Result, p2Result);
         }
 
-        private async Task<string> Part1 ()
+        private async Task<int> Part1 ()
         {
             var test1 = 0;
             var test2 = 0;
@@ -47,15 +45,14 @@ namespace Advent2020.DotNetCoreSolution.Days.SolutionDays
             }
 
             multiplyResult = test1 * test2;
-            return multiplyResult.ToString();
+            return multiplyResult;
         }
 
-        private string Part2()
+        private int Part2()
         {
             var test1 = 0;
             var test2 = 0;
             var test3 = 0;
-            var multiplyResult = 0;
             var is2020 = false;
 
             while(!is2020)
@@ -88,8 +85,8 @@ namespace Advent2020.DotNetCoreSolution.Days.SolutionDays
                 }
             }
 
-            multiplyResult = test1 * test2 * test3;
-            return multiplyResult.ToString();
+            var multiplyResult = test1 * test2 * test3;
+            return multiplyResult;
         }
     }
 }
